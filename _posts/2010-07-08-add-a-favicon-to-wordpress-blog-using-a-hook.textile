@@ -1,0 +1,14 @@
+---
+layout: post
+title: Add a favicon to your WordPress blog using a hook
+---
+
+h1. {{ page.title }}
+
+p(meta). 8 Jul 2010
+
+Just paste the following into your function.php file, save it, and you're done.
+
+<script src="http://gist.github.com/468135.js?file=favicon"></script>
+
+Don't forget to change the favicon url if needed. Also, please note that if the wp_head() function haven't been implemented in your theme, this recipe will not work.

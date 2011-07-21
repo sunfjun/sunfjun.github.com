@@ -1,0 +1,66 @@
+---
+layout: post
+title: 4 Ideas For Styling Link Hovers With CSS
+---
+
+h1. {{ page.title }}
+
+p(meta). 25 Jul 2010
+
+
+!image/css-link-hovers.jpg!
+
+Links are a basic part of the Internet. They’re what keep it connected, really, so why not make these connections fun? A link hover is what happens when you hover your mouse over a link (obviously). Usually you’ll see an underline, or an underline removed, or a different colour. But there are many ways to show people that they can click, so I thought I’d show you four of my favourites.
+
+
+h3. 1. Transition
+
+CSS3 has introduced an awesome new property called “transition”. Don’t be scared when I say CSS3, as this degrades perfectly fine and non-supporting browsers will just show a regular hover (I’m looking at you Internet Explorer). You can use this transition property to make your link change colour slowly. It’s a very subtle but nice-looking effect.
+
+You apply the transition like so: 
+
+pre. a:hover {
+   color:#000;
+   -webkit-transition:color 500ms ease-in;
+   -moz-transition:color 500ms ease-in;
+   -o-transition:color 500ms ease-in;
+   transition:color 500ms ease-in;
+}
+
+p(css_a_1). "Check me out, I’m an example.":/2010/07/25/4-Ideas-For-Styling-Link-Hovers-With-CSS.html
+
+h3. 2. Shadow
+
+Another CSS3 trick. Make sure to specify this along with a colour, as otherwise it won’t degrade nicely at all and your older browser users will get confused.
+
+pre. a:hover {text-shadow: 1px 1px 1px rgba(0,0,0,.4);}
+
+p(css_a_2). "If you hover me, good things will happen.":/2010/07/25/4-Ideas-For-Styling-Link-Hovers-With-CSS.html
+
+h3. 3. Move
+
+This is a simple one, but one that I like and use a lot. You can add some cool interactivity if you slightly alter a link’s position on hover.
+
+pre. a:hover {position: relative; top: 2px;}
+
+p(css_a_3). "I just can’t stay still when you hover me!":/2010/07/25/4-Ideas-For-Styling-Link-Hovers-With-CSS.html
+
+h3. 4. Opacity
+
+pre. a.img {opacity: .5;}
+
+You can see an example of this on the social media links at the bottom of this page. These links also move. 
+
+Well there they are. There’s nothing super mind-blowing here, but it’s the little details that count and will make your website a little more special. Are there any techniques that you like to use? Share them in the comments.
+
+
+
+
+
+
+
+
+
+
+
+

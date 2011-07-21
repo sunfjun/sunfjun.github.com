@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>PHOTO Europe</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Sliding Panel Photowall Gallery with jQuery" />
+        <meta name="keywords" content="jquery, images, gallery, photowall, slideshow"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+    </head>
+    <style>
+        a{
+            color:#fff;
+            text-decoration:none;
+        }
+        a:hover{
+            text-decoration:underline;
+        }
+        span.reference{
+            position:fixed;
+            left:30px;
+            bottom:0px;
+            font-size:9px;
+        }
+        span.reference a{
+            color:#aaa;
+        }
+        span.reference a:hover{
+            color:#ddd;
+            text-decoration:none;
+        }
+        
+        #maps div{
+          display:none;
+          position:fixed;
+          top:0;
+          left:0;
+          width:300px;
+          height:200px;
+          z-index:1000;
+        }
+
+    </style>
+    <body>
+        <div class="infobar">
+            <span id="description"></span>
+            <span id="loading">Loading Image</span>
+            <span class="reference">
+                <a href="http://sunfjun.info">© FengJunSun</a>
+            </span>
+        </div>
+        <div id="thumbsWrapper">
+            <div id="content" >
+              
+               <img src='thumbs/1.jpg' alt='images/1.jpg' title='Europe'/>
+               <img map="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=208+Rue+de+Rivoli,+Paris&sll=48.864334,2.330303&sspn=0.013071,0.033023&ie=UTF8&hq=&hnear=208+Rue+de+Rivoli,+75001+Paris,+Ile-de-France,+France&ll=48.864348,2.330368&spn=0.006507,0.016512&z=17&layer=c&cbll=48.86433,2.330299&panoid=qJG9CmiN_uYX9BwyEJ6SvA&cbp=12,20.89,,0,4.47" src='thumbs/2.jpg' alt='images/2.jpg' title='Europe'/>
+               <img src='thumbs/3.jpg' alt='images/3.jpg' title='Europe'/>
+               <img src='thumbs/4.jpg' alt='images/4.jpg' title='Europe'/>
+               <img src='thumbs/5.jpg' alt='images/5.jpg' title='Europe'/>
+               <img src='thumbs/6.jpg' alt='images/6.jpg' title='Europe'/>
+               <img src='thumbs/7.jpg' alt='images/7.jpg' title='Europe'/>
+               <img src='thumbs/8.jpg' alt='images/8.jpg' title='Europe'/>
+               <img src='thumbs/9.jpg' alt='images/9.jpg' title='Europe'/>
+               <img src='thumbs/10.jpg' alt='images/10.jpg' title='Europe'/>
+               <img src='thumbs/11.jpg' alt='images/11.jpg' title='Europe'/>
+               <img src='thumbs/12.jpg' alt='images/12.jpg' title='Europe'/>
+               <img src='thumbs/13.jpg' alt='images/13.jpg' title='Europe'/>
+               <img src='thumbs/14.jpg' alt='images/14.jpg' title='Europe'/>
+               <img src='thumbs/15.jpg' alt='images/15.jpg' title='Europe'/>
+               <img src='thumbs/16.jpg' alt='images/16.jpg' title='Europe'/>
+               <img src='thumbs/17.jpg' alt='images/17.jpg' title='Europe'/>
+               <img src='thumbs/18.jpg' alt='images/18.jpg' title='Europe'/>
+               <img src='thumbs/19.jpg' alt='images/19.jpg' title='Europe'/>
+               <img src='thumbs/20.jpg' alt='images/20.jpg' title='Europe'/>
+               <img src='thumbs/21.jpg' alt='images/21.jpg' title='Europe'/>
+               <img src='thumbs/22.jpg' alt='images/22.jpg' title='Europe'/>
+               <img src='thumbs/23.jpg' alt='images/23.jpg' title='Europe'/>
+               <img src='thumbs/24.jpg' alt='images/24.jpg' title='Europe'/>
+               <img src='thumbs/25.jpg' alt='images/25.jpg' title='Europe'/>
+               <img src='thumbs/26.jpg' alt='images/26.jpg' title='Europe'/>
+               <img src='thumbs/27.jpg' alt='images/27.jpg' title='Europe'/>
+               <img src='thumbs/28.jpg' alt='images/28.jpg' title='Europe'/>
+               <img src='thumbs/29.jpg' alt='images/29.jpg' title='Europe'/>
+               <img src='thumbs/30.jpg' alt='images/30.jpg' title='Europe'/>
+               <img src='thumbs/31.jpg' alt='images/31.jpg' title='Europe'/>
+               <img src='thumbs/32.jpg' alt='images/32.jpg' title='Europe'/>
+               <img src='thumbs/33.jpg' alt='images/33.jpg' title='Europe'/>
+               <img src='thumbs/34.jpg' alt='images/34.jpg' title='Europe'/>
+               <img src='thumbs/35.jpg' alt='images/35.jpg' title='Europe'/>
+               <img src='thumbs/36.jpg' alt='images/36.jpg' title='Europe'/>
+               <img src='thumbs/37.jpg' alt='images/37.jpg' title='Europe'/>
+               <img src='thumbs/38.jpg' alt='images/38.jpg' title='Europe'/>
+               <img src='thumbs/39.jpg' alt='images/39.jpg' title='Europe'/>
+               <img src='thumbs/40.jpg' alt='images/40.jpg' title='Europe'/>
+               <img src='thumbs/41.jpg' alt='images/41.jpg' title='Europe'/>
+               <img src='thumbs/42.jpg' alt='images/42.jpg' title='Europe'/>
+               <img src='thumbs/43.jpg' alt='images/43.jpg' title='Europe'/>
+               <img src='thumbs/44.jpg' alt='images/44.jpg' title='Europe'/>
+               <img src='thumbs/45.jpg' alt='images/45.jpg' title='Europe'/>
+               <img src='thumbs/46.jpg' alt='images/46.jpg' title='Europe'/>
+               <img src='thumbs/47.jpg' alt='images/47.jpg' title='Europe'/>
+               <img src='thumbs/48.jpg' alt='images/48.jpg' title='Europe'/>
+               <img src='thumbs/49.jpg' alt='images/49.jpg' title='Europe'/>
+               <img src='thumbs/50.jpg' alt='images/50.jpg' title='Europe'/>
+               <img src='thumbs/51.jpg' alt='images/51.jpg' title='Europe'/>
+               <img src='thumbs/52.jpg' alt='images/52.jpg' title='Europe'/>
+               <img src='thumbs/53.jpg' alt='images/53.jpg' title='Europe'/>
+               <img src='thumbs/54.jpg' alt='images/54.jpg' title='Europe'/>
+               <img src='thumbs/55.jpg' alt='images/55.jpg' title='Europe'/>
+               <img src='thumbs/56.jpg' alt='images/56.jpg' title='Europe'/>
+               <img src='thumbs/57.jpg' alt='images/57.jpg' title='Europe'/>
+               <img src='thumbs/58.jpg' alt='images/58.jpg' title='Europe'/>
+               <img src='thumbs/59.jpg' alt='images/59.jpg' title='Europe'/>
+               <img src='thumbs/60.jpg' alt='images/60.jpg' title='Europe'/>
+               <img src='thumbs/61.jpg' alt='images/61.jpg' title='Europe'/>
+               <img src='thumbs/62.jpg' alt='images/62.jpg' title='Europe'/>
+               <img src='thumbs/63.jpg' alt='images/63.jpg' title='Europe'/>
+               <img src='thumbs/64.jpg' alt='images/64.jpg' title='Europe'/>
+               <img src='thumbs/65.jpg' alt='images/65.jpg' title='Europe'/>
+               <img src='thumbs/66.jpg' alt='images/66.jpg' title='Europe'/>
+               <img src='thumbs/67.jpg' alt='images/67.jpg' title='Europe'/>
+               <img src='thumbs/68.jpg' alt='images/68.jpg' title='Europe'/>
+                
+                <div class="placeholder"></div>
+            </div>
+        </div>
+        <div id="panel">
+            <div id="wrapper">
+                <a id="prev"></a>
+                <a id="next"></a>
+            </div>
+        </div>
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                /* this is the index of the last clicked picture */
+                var current = -1;
+                /* number of pictures */
+                var totalpictures = $('#content img').size();
+                /* speed to animate the panel and the thumbs wrapper */
+                var speed 	= 500;
+				
+                /* show the content */
+                $('#content').show();
+				
+                /*
+                when the user resizes the browser window,
+                the size of the picture being viewed is recalculated;
+                 */
+                $(window).bind('resize', function() {
+                    var $picture = $('#wrapper').find('img');
+                    resize($picture);
+                });
+               
+                /*
+                when hovering a thumb, animate it's opacity
+                for a cool effect;
+                when clicking on it, we load the corresponding large image;
+                the source of the large image is stored as 
+                the "alt" attribute of the thumb image
+                 */
+                $('#content > img').hover(function () {
+                    var $this   = $(this);
+                    $this.stop().animate({'opacity':'1.0'},200);
+                },function () {
+                    var $this   = $(this);
+                    $this.stop().animate({'opacity':'0.4'},200);
+                }).bind('click',function(){
+                    var $this   = $(this);
+                    
+                    /* shows the loading icon */
+                    $('#loading').show();
+                    
+                    $('<img/>').load(function(){
+                        $('#loading').hide();
+                        
+                        if($('#wrapper').find('img').length) return;
+                        current 	= $this.index();
+                        var $theImage   = $(this);
+                        /*
+                        After it's loaded we hide the loading icon
+                        and resize the image, given the window size;
+                        then we append the image to the wrapper
+                        */
+                        
+                        resize($theImage);
+
+                        $('#wrapper').append($theImage);
+                        /* make its opacity animate */
+                        $theImage.fadeIn(800);
+                        
+                        /* and finally slide up the panel */
+                        $('#panel').animate({'height':'100%'},speed,function(){
+                            /*
+                            if the picture has a description,
+                            it's stored in the title attribute of the thumb;
+                            show it if it's not empty
+                             */
+                            var title = $this.attr('title');
+                            if(title != '') 
+                                $('#description').html(title).show();
+                            else 
+                                $('#description').empty().hide();
+                            
+                            /*
+                            if our picture is the first one,
+                            don't show the "previous button"
+                            for the slideshow navigation;
+                            if our picture is the last one,
+                            don't show the "next button"
+                            for the slideshow navigation
+                             */
+                            if(current==0)
+                                $('#prev').hide();
+                            else
+                                $('#prev').fadeIn();
+                            if(current==parseInt(totalpictures-1))
+                                $('#next').hide();
+                            else
+                                $('#next').fadeIn();
+                            /*
+                            we set the z-index and height of the thumbs wrapper 
+                            to 0, because we want to slide it up afterwards,
+                            when the user clicks the large image
+                             */
+                            $('#thumbsWrapper').css({'z-index':'0','height':'0px'});
+                        });
+                    }).attr('src', $this.attr('alt'));
+                    
+                    if($this.attr('map'))
+                    window.open($this.attr('map'),'',"status=1,location=yes");
+                    window.focus()
+                });
+
+                /*
+                when hovering a large image,
+                we want to slide up the thumbs wrapper again,
+                and reset the panel (like it was initially);
+                this includes removing the large image element
+                 */
+                $('#wrapper > img').live('click',function(){
+                    $this = $(this);
+                    $('#description').empty().hide();
+                    
+                    $('#thumbsWrapper').css('z-index','10')
+                    .stop()
+                    .animate({'height':'100%'},speed,function(){
+                        var $theWrapper = $(this);
+                        $('#panel').css('height','0px');
+                        $theWrapper.css('z-index','0');
+                        /* 
+                        remove the large image element
+                        and the navigation buttons
+                         */
+                        $this.remove();
+                        $('#prev').hide();
+                        $('#next').hide();
+                    });
+                });
+
+                /*
+                when we are viewing a large image,
+                if we navigate to the right/left we need to know
+                which image is the corresponding neighbour.
+                we know the index of the current picture (current),
+                so we can easily get to the neighbour:
+                 */
+                $('#next').bind('click',function(){
+                    var $this           = $(this);
+                    var $nextimage 		= $('#content img:nth-child('+parseInt(current+2)+')');
+                    navigate($nextimage,'right');
+                });
+                $('#prev').bind('click',function(){
+                    var $this           = $(this);
+                    var $previmage 		= $('#content img:nth-child('+parseInt(current)+')');
+                    navigate($previmage,'left');
+                });
+
+                /*
+                given the next or previous image to show,
+                and the direction, it loads a new image in the panel.
+                 */
+                function navigate($nextimage,dir){
+                    /*
+                    if we are at the end/beginning
+                    then there's no next/previous
+                     */
+                    if(dir=='left' && current==0)
+                        return;
+                    if(dir=='right' && current==parseInt(totalpictures-1))
+                        return;
+                    $('#loading').show();
+                    $('<img/>').load(function(){
+                        var $theImage = $(this);
+                        $('#loading').hide();
+                        $('#description').empty().fadeOut();
+                         
+                        $('#wrapper img').stop().fadeOut(500,function(){
+                            var $this = $(this);
+							
+                            $this.remove();
+                            resize($theImage);
+                            
+                            $('#wrapper').append($theImage.show());
+                            $theImage.stop().fadeIn(800);
+
+                            var title = $nextimage.attr('title');
+                            if(title != ''){
+                                $('#description').html(title).show();
+                            }
+                            else
+                                $('#description').empty().hide();
+
+                            if(current==0)
+                                $('#prev').hide();
+                            else
+                                $('#prev').show();
+                            if(current==parseInt(totalpictures-1))
+                                $('#next').hide();
+                            else
+                                $('#next').show();
+                        });
+                        /*
+                        increase or decrease the current variable
+                         */
+                        if(dir=='right')
+                            ++current;
+                        else if(dir=='left')
+                            --current;
+                    }).attr('src', $nextimage.attr('alt'));
+
+                    if($nextimage.attr('map'))
+                    window.open($nextimage.attr('map'),'',"status=1,location=yes");
+                    window.focus()
+                }
+
+                /*
+                resizes an image given the window size,
+                considering the margin values
+                 */
+                function resize($image){
+                    var windowH      = $(window).height()-100;
+                    var windowW      = $(window).width()-80;
+                    var theImage     = new Image();
+                    theImage.src     = $image.attr("src");
+                    var imgwidth     = theImage.width;
+                    var imgheight    = theImage.height;
+
+                    if((imgwidth > windowW)||(imgheight > windowH)){
+                        if(imgwidth > imgheight){
+                            var newwidth = windowW;
+                            var ratio = imgwidth / windowW;
+                            var newheight = imgheight / ratio;
+                            theImage.height = newheight;
+                            theImage.width= newwidth;
+                            if(newheight>windowH){
+                                var newnewheight = windowH;
+                                var newratio = newheight/windowH;
+                                var newnewwidth =newwidth/newratio;
+                                theImage.width = newnewwidth;
+                                theImage.height= newnewheight;
+                            }
+                        }
+                        else{
+                            var newheight = windowH;
+                            var ratio = imgheight / windowH;
+                            var newwidth = imgwidth / ratio;
+                            theImage.height = newheight;
+                            theImage.width= newwidth;
+                            if(newwidth>windowW){
+                                var newnewwidth = windowW;
+                                var newratio = newwidth/windowW;
+                                var newnewheight =newheight/newratio;
+                                theImage.height = newnewheight;
+                                theImage.width= newnewwidth;
+                            }
+                        }
+                    }
+                    $image.css({'width':theImage.width+'px','height':theImage.height+'px'});
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,145 @@
+---
+layout: post
+title: How To Enhance Your Form Input Fields with jQuery
+---
+
+h1. {{ page.title }}
+
+p(meta). 9 Jul 2010
+
+jQuery makes it easy to spice up our search bars and form input fields with simple touches that really enhances the user’s experience. Let’s look at how jQuery can be used to show/hide a default value inside a field and provide visual user feedback when the field is selected.
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#searchbar").attr("value", "I'm looking for...");
+
+		var text = "I'm looking for...";
+
+		$("#searchbar").focus(function() {
+			$(this).addClass("active");
+			if($(this).attr("value") == text) $(this).attr("value", "");
+		});
+
+		$("#searchbar").blur(function() {
+			$(this).removeClass("active");
+			if($(this).attr("value") == "") $(this).attr("value", text);
+		});
+	});
+</script>
+<style type="text/css" media="screen">
+  div, form, fieldset, input {
+  	margin: 0; padding: 0; border: 0;
+  }
+
+  #form {
+  	background: url(/images/bg.png);
+  	line-height: 10px;
+  }
+
+  form {
+    width:588px;
+  	margin: 200px auto;
+  }
+
+  #searchbar {
+  	width: 392px; 
+  	float: left; padding: 20px 150px 20px 40px;
+  	background: #ededed url(/images/bar-bg.png) repeat-x;
+  	border: 3px solid #c7c7c7;
+  	border-radius: 100px; -moz-border-radius: 100px; -webkit-border-radius: 100px;
+  	font: italic 50px Georgia; color: #898989;
+  	outline: none; /*Remove Chrome and Safari glows on focus*/
+  }	
+  	#searchbar.active {
+  		background: #ebf3fc url(/images/bar-bg-active.png) repeat-x;
+  		border: 3px solid #abd2ff;
+  	}
+
+  #searchbtn {
+    margin: 0; padding: 0; border: 0;
+  	width: 67px; height: 70px; float: left; margin: 18px 0 0 -115px;
+  	background: url(/images/search.png); text-indent: -9999px;
+  	padding: 0 0 0 67px; /*IE fix*/
+  	cursor: pointer;
+  }
+  	#searchbtn:hover {
+  		background-position: 0 -70px;
+  	}
+
+</style>
+<div id="form">
+  <form action="" method="get">
+  	<fieldset>
+  		<input type="text" id="searchbar" />
+  		<input type="submit" value="Search" id="searchbtn" />
+  	</fieldset>
+  </form>
+</div>
+
+
+
+
+The example we’ll be creating features a simple search bar and icon which appears grey as standard but turns to a cool blue when focused. By default the input displays the words I’m looking for…, which disappears when the field is selected.
+
+h2. Why not CSS?
+
+Similar effects could be created purely with CSS. There’s the pseudo :focus  selector which allows us to add special styling to elements when they have the user’s attention. Plus, the default input value could be added as a background image, which is then removed also using the :focus  selector. But there’s two small problems; firstly the :focus  selector isn’t supported by Internet Explorer, and secondly there’s no way of ensuring the default value doesn’t reappear once the user has entered their own information within the input field. This is where jQuery takes over to provide a complete solution that’s compatible with all browsers.
+
+
+h2. Creating the search form
+
+Let’s create our sample form design. We’ll concentrate more on the front-end design of HTML, CSS and Javascript rather than make the form fully functioning, so to start we need a basic HTML structure:
+
+
+<script src="http://gist.github.com/468900.js?file=form"></script>
+
+
+Just like all forms on the web, our simple search bar is created using a <pre><form></pre> element. Inside this is a <pre><fieldset></pre>  to contain our two input fields. The first is a text input with an ID of searchbar, which will be the field the user enters their query into. The second is a submit input element with an ID of searchbtn, which has a value attribute of “Search” to give a descriptive purpose to the button. Our final design will render this input as a magnifying glass icon which replaces the text for a more visual clue.
+
+
+<script src="http://gist.github.com/468901.js?file=css"></script>
+
+
+The whole form can then be styled up with some simple CSS. The search bar is given a specific width of 425px, along with some padding  around the edges. This padding adds 20px to the top and bottom, 40px to the left and a large 150px on the right (to accommodate the button). A thin repeating gradient graphic is added to as a background-image  and a grey border added to the outside. border-radius  is used to round off the edges of the search bar for supporting browsers, otherwise it will appear rectangular. The text inside the field is then set up as 54px Georgia in Italic, with a grey colouring. The final line of outline: none; simply removes the default glow that appears on focus in Safari and Chrome.
+
+
+<script src="http://gist.github.com/468905.js?file=css"></script>
+
+
+The search bar is then given some styling for when the class of active is used. This will be added by jQuery later, which leaves it to the CSS to change the background-image to a blue gradient and a light blue border.
+
+
+<script src="http://gist.github.com/468906.js?file=css"></script>
+
+
+The button appears as an image based icon, so a specific width  and height is added. The button is floated alongside the bar, then margin is used to move it into place 18px from the top to align it vertically, and -115px from the left to pull it back to sit inside the search bar. The icon is added as a background-image  and text-indent used to shift the default value text off-screen. Internet Explorer doesn’t like this technique, so padding  can be used as well. To ensure the user’s mouse displays the appropriate cursor as feedback that the element can be clicked, cursor:pointer;  displays the typical hand icon. As an extra visual clue the search icon changes colour by altering the background-position of the sprite graphic when the user hovers over it.
+
+
+<script src="http://gist.github.com/468908.js?file=js"></script>
+
+
+The search form looks and works fine so far, but without the fancy jQuery effects. The library is linked from inside the HTML document, then the document is prepared for our own bit of Javascript. Every jQuery command is contained within the same syntax, which basically says “When the document is ready, run this function.”
+
+
+
+<script src="http://gist.github.com/468909.js?file=js"></script>
+
+
+
+The first line of our jQuery takes the #searchbar and adds the words “I’m looking for…” inside the value attribute using the .attr() method. Next, a variable named text  is set, which is used along with the code that adjusts the input text of focus. Two functions are then added to the search bar; .focus()  for when the input is selected, and .blur() when it is deselected. The class of active we set up in the CSS is added or removed on focus and blur, then jQuery checks the status of the value text. If the searchbar’s value is the same as the variable of ‘text’, then the value should be changed to nothing (“ ”). When the input is deselected, if the value is blank, the value should revert back to the ‘text’ variable, otherwise the value that the user has manually entered will remain. This prevents the value from clearing out the user’s query and switching back to “I’m looking for…” when the input is deselected.
+
+
+These techniques don’t have to be reserved for search bars, the same effect can be used on any input field to create super cool sign up or contact forms.
+
+
+
+
+
+
+
+
+
+
+

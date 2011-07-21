@@ -1,0 +1,95 @@
+---
+layout: default
+title: FengJun Sun Home
+---
+
+<div id="home">
+  <h1>Blog Posts</h1><ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+  
+  <h1>Open Source Projects</h1>
+  <ul class="posts">
+
+  </ul>
+  
+  <h1>My Company Photos</h1>
+  <div id="slideshow">
+  	<div id="slideshow20100726"></div>
+			<script type="text/javascript" src="/script/js_examples/PanAndZoom.js"></script>
+				<script type="text/javascript">
+    					(function() {
+    						var err;
+    						try{
+    							$.slideshowBoxEmbedCanvas.init({
+    								appendToID:"slideshow20100726",
+    								imagesXmlPath:"/images.xml",
+    								imgBlankUrl:"/js/blank.gif",
+    								imgPreloaderUrl:"/js/load.gif",
+    								width:800,
+    								height:200,				
+    								autoHideControls:"true",
+    								autoSlideShow:"true",
+    								backgroundVisible:"true",
+    								loadOriginalImages:"false",
+    								slideShowSpeed:"6",
+    								backgroundColor:"#1C1C1C",
+    								backgroundImage:"",
+    								scaleBackground:"true",
+    								controlBarAlpha:"1",
+    								controlBarPrimaryColor:"#EEEEEE",
+    								controlBarSecondaryColor:"#CCCCCC",
+    								slideShowControls:"true",
+    								fullScreenButton:"true",
+    								controlsHideSpeed:"2",
+    								showImageInfos:"true",
+    								showImageIndex:"false",
+    								textColor:"#FFFFFF",
+    								textBackgroundAlpha:"0.6",
+    								textBackgroundColor:"#EEEEEE",
+    								scaleMode:"scaleCrop",
+    								effect:"zoom"
+    							});
+    						}catch(err){}
+    					})();
+    				</script>
+    <script type="text/javascript">
+    	<!-- Begin Vertical alignment -->
+    	function getWindowHeight() {
+    	  var windowHeight = 0;
+    	  if (typeof(window.innerHeight) == 'number') {
+    	    windowHeight = window.innerHeight;
+    	  } else {
+    	    if (document.documentElement && document.documentElement.clientHeight) {
+    	       windowHeight = document.documentElement.clientHeight;
+    	    } else {
+    	       if (document.body && document.body.clientHeight) {
+    	         windowHeight = document.body.clientHeight;
+    	        }
+    	    }
+    	  }	return windowHeight;
+    	}		
+    	function setContent() {
+    	  if (document.getElementById) {
+    	    var windowHeight = getWindowHeight();
+    	    if (windowHeight > 0) {
+    	      var contentElement = document.getElementById('content');
+    	      var contentHeight = contentElement.offsetHeight;
+    	      if (windowHeight - contentHeight > 0) {
+    	        contentElement.style.position = 'relative';contentElement.style.top = ((windowHeight / 2) - (contentHeight / 2)) + 'px';
+    	      }else {
+    	        contentElement.style.position = 'static';}
+    	      }
+    	    }
+    	  }
+    	window.onload = function() {setContent();} 
+    	window.onresize = function() {setContent();}
+    	<!-- END Vertical alignment -->
+    </script>
+    
+  </div>
+  
+</div>
+  

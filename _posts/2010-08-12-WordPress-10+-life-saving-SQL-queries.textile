@@ -1,0 +1,122 @@
+---
+layout: post
+title: WordPress 10+ life saving SQL queries
+---
+
+h1. {{ page.title }}
+
+p(meta). 12 Aug 2010
+
+
+Although there's lots of things that you can do in WordPress, sometimes you may need a quick fix for a specific problem. In those cases, working directly on the database can be a real life-saver. In this article, I'm going to show you 10+ extremely useful SQL queries for WordPress.
+
+h3. How to execute SQL queries
+
+For those who don’t know yet, SQL queries have to be executed within the MySQL command line interpreter or a web interface such as the popular PhpMyAdmin. Since we’re going to work on WordPress, you should note that the SQL Executionner plugin provides an easy-to-use interface that allows you to run SQL queries directly on your WordPress blog dashboard.
+
+
+Although all the queries from this article have been tested, don’t forget that you shouldn’t test any of those on a production blog. Also, make sure that you always have a working database backup.
+
+
+h3. Manually change your password
+
+It may sound like the thing that only happens to others but forgetting a password can happen to any of us. In case you lost your blog admin password, the only solution is to create a new one directly in your MySQL database.
+The following query will do it. Notice that we use the MD5() MySQL function to turn our password into an MD5 hash.
+
+<script src="http://gist.github.com/520425.js?file=sql"></script>
+
+
+h3. Transfer posts from one user to another
+
+Most WordPress newcomers tend to use the good old “admin” account instead of creating an account with their real name. If you made that mistake and created another account later, you can easily transfer your old “admin” posts to your new account with the SQL query below.
+You’ll need the user id of both your old and new accounts.
+
+<script src="http://gist.github.com/520427.js?file=sql"></script>
+
+
+h3. Delete post revisions and meta associated to those revisions
+
+Post revisions are very useful, especially in the case of a multi author blog. However, the problem of post revisions is definitely the number of database records it creates. For exemple, if your blog has 100 posts, which has 10 revisions each, you’ll end up with 1000 records in the wp_posts tables, while only 100 of them are necessary.
+Executing this query will delete all post revisions as well as all meta info (custom fields, etc) associated to it. The whole process will result in a consequent gain of database space.
+
+<script src="http://gist.github.com/520435.js?file=sql"></script>
+
+h3. Batch delete spam comments
+
+Imagine that you’re coming back from holidays, where you haven’t had any access to the Internet. If you haven’t installed Akismet and depending on your blog popularity, you may end up with 1000, 2000 or even 10,000 comments to moderate.
+You can spend a whole day to moderate the lot, or you can use this life-saving query to delete all unapproved comments. And for your next holidays, don’t forget to install Akismet!
+
+<script src="http://gist.github.com/520436.js?file=sql"></script>
+
+h3. Find unused tags
+
+Tags are recorded on the wp_terms table. If for some reason a tag has been created but is not used anymore, it stays in the table. This query will let you know which tags are on the wp_terms table without being used anywhere on your blog. You can delete those safely.
+
+<script src="http://gist.github.com/520438.js?file=sql"></script>
+
+h3. Find and replace data
+
+This tip isn’t specific to WordPress and is a must know for anyone who’s working with MySQL databases. The MySQL function replace() lets you specify a field name, a string to find, and a replacement string. Once the query is executed, all occurrences of the string to replace will be replaced by the replacement string.
+In case of a WordPress blog, this can be useful to batch replace a typo (For example people who repeatedly call the software Wordpress…) or an email address.
+
+<script src="http://gist.github.com/520440.js?file=sql"></script> 
+
+
+h3. Get a list of your commentators emails
+
+Have you ever received unsolicited emails from blogs you previously commented? I’m sure you did, just like me. The fact is that getting a list of emails from your commentators is extremely easy using the following query. The DISTINCT parameter will make sure that we’ll only get each email once, even if the user commented more than once.
+Please note that this is only a proof of concept: Don’t send your users unwanted emails.
+
+<script src="http://gist.github.com/520441.js?file=sql"></script>
+
+
+h3. Disable all your plugins at once
+
+When things go wrong, especially on a production site, you have to be quick. Considering the fact that plugins are often the source of problems, disabling all your plugins in a second can prevent lots of problems.
+Just run the following query:
+
+<script src="http://gist.github.com/520442.js?file=sql"></script>
+
+h3. Delete all tags
+
+
+In WordPress, tags are recorded in the wp_terms tables, along with categories and taxonomies. If you wish to remove all tags, you can’t simply empty or delete the wp_terms as you’ll destroy categories at the same time!
+If you want to get rid of your tags, run this query. It will remove all tags and relationships between tags and posts, while leaving categories and taxonomies intact.
+
+<script src="http://gist.github.com/520443.js?file=sql"></script>
+
+h3. List unused post meta	
+
+Post meta is created by plugins and custom fields. They are extremely useful, but they can quickly make your database grow in size. The following query will show you all the records in the postmeta table that doesn’t have corresponding records in the post table.
+
+<script src="http://gist.github.com/520444.js?file=sql"></script>
+
+
+h3. Disable comments on older posts
+
+
+Everyone who has been in blogging for more than one year will know: Even after some months, your old posts still receive interest from the public and lots of comments, mostly because they are indexed by search engines. This is a good thing of course, but the problem is for people like me who own technical blogs and have to answer lots of questions related to their old (and sometimes obsolete) posts.
+The solution to this problem is to automatically close comments on posts which are too old. This SQL query will close comments on all posts published before January 1, 2009.
+
+<script src="http://gist.github.com/520446.js?file=sql"></script>
+
+h3. Replace commentator url
+
+Another good example of the replace() function. This query will replace the email adress provided in the comments field, by a new one.
+
+<script src="http://gist.github.com/520448.js?file=sql"></script>
+
+
+h3. Delete all comments with a specific url
+
+Lately, I’ve noticied that some clever spammers left some quite relevant comments, but with a link pointing to a viagra site. Unfortunely, when I noticied it the commentator already left lots of comments. The following query will delete all comments with a specific url. The “%” signs means that any url containing the string within the % signs will be deleted.
+
+<script src="http://gist.github.com/520449.js?file=sql"></script>
+
+
+
+
+
+	
+
+

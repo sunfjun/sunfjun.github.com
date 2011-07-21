@@ -1,0 +1,96 @@
+---
+layout: post
+title: When to use $_SESSION vs $_COOKIE
+---
+
+h1. {{ page.title }}
+
+p(meta). 23 Jul 2010
+
+A critical feature in web programming is the ability to seamlessly pass data from one page load to the next. It’s used most commonly when dealing with user logins, but also for passing error messages, shopping carts, etc.
+
+Storing data across pages using PHP is done with two variables in the global scope, called $_SESSION and $_COOKIE, and although accomplishing the same end goal, the both go about it in very different ways. The purpose of this article is to give a brief look into the differences between cookies and sessions, when it’s better to use one versus the other, and the pros and cons of the two.
+
+The difference is in how each store data. Cookies store data locally in the user’s browser, while sessions store data on the webserver.
+
+h3. Session Basics
+
+Sessions are simply server-side cookies each with a corresponding client side cookie that contains only a reference to its server-side counterpart. When a user visits a page, the client sends the reference code to the server, and PHP will then match that reference code to a server-side cookie and load the data in the server’s cookie into the $_SESSION superglobal.
+
+h3. Pros
+
+Can store very large amounts of data easily.
+Save bandwidth by passing only a reference to the session each pageload. A client-side cookie has to pass all of its data.
+Data is stored on the web server. This makes sessions secure, because the data cannot be viewed or edited by the client.
+
+h3. Cons
+
+Ends when the browser is closed unless you’ve configured php.ini to extend sessions’ cookie lifetime. Cannot last forever.
+Cookie Basics
+
+Cookie data is sent to the web server every page load. PHP reads and stores the value into the $_COOKIE superglobal. When a cookie is created, you can give it a lifespan. After that lifespan runs out, it will expire.
+
+h3. Pros
+
+Can last as long as the website needs. They will still be there even if the browser is closed and reopened.
+Useful for “remember me” logins
+Useful for storing temporary user settings. For example, if a user is browsing a paginated list of items, sorted a certain way, the sorting setting can be stored in a cookie.
+Cons
+
+Stored in the users filesystem. This means that the user can tamper with it and view it.
+Can only store a limited amount of data.
+Must pass all data to the webserver each pageload. This takes up more bandwidth.
+Cookies in Action
+
+h3. Creating a cookie
+
+The function definition:
+
+bool setcookie ( string name [, string value [, int expire [, string path [, string domain [, int secure]]]]])
+
+pre .<?php
+    if (!isset($_COOKIE['Ordering'])) {
+        setcookie("Ordering", $_POST['ChangeOrdering'], time() + 31536000);
+    }
+?>
+
+h3. Using a cookie
+
+pre . <?php
+	echo (isset($_COOKIE[‘ordering’])) ? $_COOKIE[‘ordering’] : ‘cookie value not set’;
+?>
+
+h3. eleting a cookie
+
+pre. <?php setcookie(‘favorite_color’); ?>
+
+Setting a cookie with no value is the same as deleting it. This will not remove the file from the client computer. To do this, you can set the cookie expiration date to a time in the past, and the browser will take care of it.
+
+h3. Sessions in Action
+
+h3. Creating a session
+
+pre. <?php session_start(); ?>
+
+This must be called near the top of your code before any output. When you call this function, PHP will check to see if the user sent a session cookie. If so, it will load the session data into $_SESSION. If not, it will create a new session file on the server and send the ID back to the client.
+
+h3. Setting a value
+
+pre. <?php $_SESSION[‘first_name’] = ‘Brian’; ?>
+
+h3. Reading a session value
+
+pre. <?php echo $_SESSION[‘first_name’]; ?>
+
+h3. Removing session data
+
+pre. <?php unset($_SESSION[‘first_name’]); ?>
+
+h3. Ending a session
+
+pre. <?php session_destroy(); ?>
+
+h3. The Bottom Line
+
+Sessions are cookies where the data is stored on the server. Cookies are stored in the users filesystem (typically in their “Temporary Internet Files” folder). Both have their advantages, but on any given day, you’ll probably find yourself using sessions much more commonly.
+

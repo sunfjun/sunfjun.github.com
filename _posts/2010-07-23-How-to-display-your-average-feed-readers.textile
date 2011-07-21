@@ -1,0 +1,16 @@
+---
+layout: post
+title: How to display your average feed readers
+---
+
+h1. {{ page.title }}
+
+p(meta). 23 Jul 2010
+
+As usual, the first thing to do is to paste the function in your functions.php file:
+
+<script src="http://gist.github.com/487267.js?file=php"></script>
+
+Once done, you can call the function wherever you want in your theme files. Pass your Feedburner feed id as a parameter:
+
+<script src="http://gist.github.com/487268.js?file=php"></script>

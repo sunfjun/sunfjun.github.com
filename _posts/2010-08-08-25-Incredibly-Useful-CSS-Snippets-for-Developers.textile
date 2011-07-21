@@ -1,0 +1,154 @@
+---
+layout: post
+title: 25 Incredibly Useful CSS Snippets for Developers
+---
+
+h1. {{ page.title }}
+
+p(meta). 8 Aug 2010
+
+
+CSS is no doubt up there with the most important web languages that we use. While html provides the structure it can be inconsistent and unpredictable across different new and old browsers. Css is where the html is styled though, and where we get creative as well as addressing those inconsistencies. Below is a fantastic list of 25 Css snippets that I am sure you will find extremely useful. Whether you are a veteran web developer, or are just getting your foot in the door of css, they are all well worth checking out.
+
+h2. Hide text with text indent
+
+This is extremely useful for use for things such as your company logo. More often than not, it’s an image, but you’ll want to display it in h1 tags for SEO as well. Here’s the best way to do so. What we basically do is hide the text far away off the screen, and apply a background image instead.
+
+<script src="http://gist.github.com/514151.js?file=css"></script>
+
+h2. Style links depending on file format
+
+This snippet is aimed at user experience. Often on the internet we find ourself clicking on links knowing nothing about where we are heading. This snippet can be used and expanded to show small icons next to your links telling the user if it is an external link, an email, a pdf, an image, and so much more.
+
+
+<script src="http://gist.github.com/514153.js?file=css"></script>
+
+h2. Remove textarea scrollbar in IE
+
+Internet Explorer has an annoying habit of adding scrollbars to textarea’s even when the textarea’s content is not overflowing. You can rectify this flaw with this easy to use snippet.
+
+<script src="http://gist.github.com/514155.js?file=css"></script>
+
+h2. Drop cap
+
+Commonplace these days in blogs and news sites is the dropcap. You’d be surprised at how easy it is to implement, and how well it degrades for older browsers.
+
+<script src="http://gist.github.com/514159.js?file=css"></script>
+
+h2. Css Transparency
+
+Transparency is something that isn’t done the same way across browsers which can be annoying. Here’s how you can target transparency in multiple browsers.
+
+<script src="http://gist.github.com/514161.js?file=css"></script>
+
+h2. Css Reset by Eric Meyer
+
+Eric Meyer’s css reset has become almost standard now days for use at the start of your stylesheet. Having been adopted by some of the most influential designers, you can be sure of its quality.
+
+<script src="http://gist.github.com/514165.js?file=css"></script>
+
+h2. Image preloader
+
+Sometimes it is useful to pre-load your images so that when a certain element is needed, they’ll already be loaded for you and there wont be any delay or flickering.
+
+<script src="http://gist.github.com/514166.js?file=css"></script>
+
+h2. Basic css sprite button
+
+Having a button or link with a background image is fairly normal, and nowadays, we require further effects to enhance the user experience. Once of this is an indicator to the user that they are hovering over a button. Using a sprite, we can create this effect by changing the position of the background image down a certain height to show the background to the button on hover. A simple yet effective technique.
+
+<script src="http://gist.github.com/514168.js?file=css"></script>
+
+h2. Google Font API
+
+Google recently released a fantastic resource for web designers allowing them to load new fonts from google for use in our web pages. We can even load different variants of fonts such as bold, italic and so on. While the library of fonts available from google is limited, there is still plenty to use. First include the dynamically written stylesheet by naming the fonts and variants you want, and then use the font names in your css as you normally would! For further info on Google Font API, read here.
+
+<script src="http://gist.github.com/514170.js?file=css"></script>
+
+h2. Browser specific hacks
+
+Sometimes it’s useful to target specific browsers to fix their inconsistencies and conditional comments aren’t always the best way to do so. This list of css browser hacks by Chris Coyier is a top-notch list of ways to target browsers with simple css.
+
+<script src="http://gist.github.com/514173.js?file=css"></script>
+
+h2. Fixed Footer
+
+You would think creating a footer that sticks to the bottom of the screen would be rather hard, but surprisingly it isn’t if you want to start with a basic footer. There is an IE6 hack we have to use, but apart from that, it’s easy!
+
+<script src="http://gist.github.com/514175.js?file=css"></script>
+
+h2. Flip an image
+
+Flipping an image rather than just loading a new image that is already reversed can be rather useful. Say you want to use only one image for an arrow, but have several on the page going in different directions. Here’s your problem solved.
+
+<script src="http://gist.github.com/514176.js?file=css"></script>
+
+h2. Clearfix
+
+A while back, someone decided it was time to clear floated elements without adding any extra markup to the document. They did this by creating a class that can be applied to the container of floated children to clear it. A fantastic way to do so, and something that is nowadays, widely used.
+
+<script src="http://gist.github.com/514177.js?file=css"></script>
+
+h2. Rounded Corners
+
+With the slow introduction of css3, rounded corners have been made easily possibly in modern browsers. Sadly we still don’t have css3 support for IE, but it will be available in IE9 whenever that is released.
+
+<script src="http://gist.github.com/514178.js?file=css"></script>
+
+h2. Style Overriding
+
+It still surprises me that some people don’t know about !important in css, because it is such a powerful and useful tool to have. Basically, any rule with !important at the end, will override any of the same rule that is applied to that element wherever it appears in the css file, or in-line html.
+
+<script src="http://gist.github.com/514179.js?file=css"></script>
+
+h2. Font face
+
+Font-face didn’t really break through until late last year, but has been around since the days of IE6 being a modern browser! It’s picked up in support a lot now though, and offers a great way to use non web safe fonts in your web projects. While this snippet works, you might as well save your time by using the Font Squirrel Font Face Generator.
+
+<script src="http://gist.github.com/514181.js?file=css"></script>
+
+h2. Center a website
+
+A common design trend these days is for your website to center itself in the middle of browser’s viewport horizontally. This is an easily achievable thing to do.
+
+<script src="http://gist.github.com/514182.js?file=css"></script>
+
+h2. Min-height in IE
+
+This comes down to fixing a simple, yet annoying bug in IE’s capability of handling min-height. In essence, IE interprets height as min-height, so since IE wont implement the auto height, this snippet will fix all this for us.
+
+<script src="http://gist.github.com/514183.js?file=css"></script>
+
+h2. Image loading
+
+This image loading effects mimics that of an ajax loader, where a loading circle is displayed while content loads. This works especially well for larger, slower loading images, and is css only!
+
+<script src="http://gist.github.com/514184.js?file=css"></script>
+
+h2. Vertical Center
+
+This short snippet allows you to vertically center the contents of a container without any extra markup by simply displaying it as a table cell which then allows you to use the vertical-align attribute.
+
+<script src="http://gist.github.com/514185.js?file=css"></script>
+
+Create pullquotes
+
+Firstly, what is a pullquote? Well in news and magazine style websites, you’ll often notice small quotes added within the article, not as full blockquotes, but as small quotes that sit within the article but to the side, sometimes adding things such as people’s opinions or quotes. They are extremely easy to create you’ll be glad to know, and when used properly, can add greatly to the user experience when reading an article.
+
+<script src="http://gist.github.com/514186.js?file=css"></script>
+
+h2. Text Selection
+
+Some people are unaware that it is possible to change the color when you highlight text in your browser. It is so easy to with two selectors; just be careful you don’t ruin your site with it.
+
+<script src="http://gist.github.com/514188.js?file=css"></script>
+
+h2. Print page breaks
+
+This add’s again to the user experience when printing. For example, when printing an article, it may be useful for a user to have the comments on a new page from the article itself. by adding this class to the comments area, a page break will appear when printing. It can be used anywhere else on your site as well!
+
+<script src="http://gist.github.com/514189.js?file=css"></script>
+
+h2. Further thoughts and discussion
+
+I know for sure I haven’t been able to cover every useful css snippet out there, but have provided those that I think will benefit the most. What do you think about these snippets, and what do you think about others that are out there? If you know of some mighty useful css snippets, then bring them to the table in the comments, so we can see and discuss them!

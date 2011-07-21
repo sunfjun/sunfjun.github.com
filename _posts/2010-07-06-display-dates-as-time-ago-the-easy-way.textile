@@ -1,0 +1,14 @@
+---
+layout: post
+title: Display dates as “time ago”, the easy way
+---
+
+h1. {{ page.title }}
+
+p(meta). 6 Jul 2010
+
+
+To display human readable dates on your blog, you have to use the human_time_diff() function. The following piece of code will show a post date like "Posted 6 days ago".
+Paste it anywhere within the loop, save the file, and you're done.
+
+Posted <script src="http://gist.github.com/465552.js?file=wp%20time%20ago"></script>

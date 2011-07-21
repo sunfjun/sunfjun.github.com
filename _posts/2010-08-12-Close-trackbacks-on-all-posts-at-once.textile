@@ -1,0 +1,15 @@
+---
+layout: post
+title: Close trackbacks on all posts at once
+---
+
+h1. {{ page.title }}
+
+p(meta). 12 Aug 2010
+
+Simply run the following SQL query on your WordPress database, using the command line client or PhpMyAdmin. This will close pingbacks/trackbacks on all existing posts.
+Don't forget to backup your database before using this query.
+
+pre. UPDATE wp_posts SET ping_status = 'closed';
+
+If you like to know more about WordPress SQL queries, you should have a look to this "article":/2010/08/12/WordPress-10%2B-life-saving-SQL-queries.html.

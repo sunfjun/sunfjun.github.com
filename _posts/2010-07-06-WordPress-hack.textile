@@ -1,0 +1,20 @@
+---
+layout: post
+title: WordPress hack Use includes in your posts or pages
+---
+
+h1. {{ page.title }}
+
+p(meta). 6 Jul 2010
+
+
+The first step is to paste the following code in your function.php  file:
+
+<script src="http://gist.github.com/465563.js"></script>
+
+
+Once done, you can use the shortcode in your posts or pages, with the following syntax:
+
+<script src="http://gist.github.com/465577.js?file=gistfile1.txt"></script>
+
+postidparam is the ID of the post you want to include.

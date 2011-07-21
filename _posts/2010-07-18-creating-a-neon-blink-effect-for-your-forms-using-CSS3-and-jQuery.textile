@@ -1,0 +1,159 @@
+---
+layout: post
+title: Creating a Neon Blink Effect for your Forms using CSS3 and jQuery
+---
+
+h1. {{ page.title }}
+
+p(meta). 18 Jul 2010
+
+!/images/neon-blink-effect-preview.jpg!How cool will it be to have a glowing blink effect behind your input boxes in a form without using Flash? Well thanks to the bright new kid on the block, CSS3, spruced up with a bit of jQuery! In this tutorial, I will show you how to build a nifty effect to enhance your forms.
+
+@Note:@ In this tutorial, we have made use of @@-webkit-keyframes@ which works only in browsers using the Webkit layout engine like Chrome and Safari. For browsers like Firefox and Opera, where there is no alternative, we will have to gracefully degrade the effect, which in this case will be just a box-shadow on focus. Internet Explorer (till version 8) cannot render most of what we will learn here, but IE 9 does seem to be very promising from what I’ve seen in the recent platform preview.
+
+
+
+You can see the live demo of what we are going to build "here.":/images/demo/source-code/index.html The source code of our experiment is also available "here to download":/images/neonblink.zip.
+
+This is how the form will look after we complete building it:
+
+!/images/neon-blink-effect-overall.jpg!
+
+
+h2. Step 1: Before We Start Coding Away
+
+Make sure you download the latest release of jQuery (version 1.4.2 at the time of writing), if you feel the need for a local copy, otherwise one always has the option of using the Google API(if working online), in this case the AJAX libraries. To include the latest release under the “1″ branch, add the following line of code in the head tag above all the other scripts which make use of jQuery.
+
+<script src="http://gist.github.com/480312.js?file=js"></script>
+
+This line fetches the latest version under the “1″ branch. To be more specific, that is if you want the latest version under “1.4″ branch, just change the “1″ to “1.4″. In my code, I’ve made use of a local copy of jQuery 1.4.2, which I’ve provided in the source files.
+
+The naming of the files is as follows:
+
+* xHTML file: index.html
+* CSS file: style.css
+* Javascript file: highlight.js
+
+Put all the files in the same folder, along with the local copy of jQuery (if any), if you are following the exact code I’ve written. Let’s begin!
+
+
+h2. Step 2: Creating the Form Layout in xHTML
+
+The next step would be to create the form layout in xHTML. Following are the contents of @index.html@.
+
+<script src="http://gist.github.com/480315.js?file=html"></script>
+
+Let’s understand the code above. The xhtml body consists of a @page-wrap@  inside which we wrap our @<form>@, so that it can be centered in the CSS styling, as shown below. Each @label@, @input@ and @textarea@ is wrapped inside a (class: field),
+so that firstly, we can format it as we want and secondly, we can use jQuery to highlight the parent of the focused textfield/textarea to enhance the visual factor. These are optional and can be modified as required. Each textfield/textarea is given a class inputfield with the textarea having an additional class of @textarea1@, so that we can adjust the height of the @textarea@ in the CSS, and for the same purpose, we have also given an additional class area to its parent div.
+
+h2. Step 3: Basic CSS Styling
+
+Now we provide some basic CSS styling to the bare xHTML page as follows. Put the following piece of code in @style.css@.
+
+<script src="http://gist.github.com/480403.js?file=css"></script>
+
+Here, the CSS3 @border-radius@ property is very essential in the @inputfield@ class since the @box-shadow@  property, which we are going to add later on, has to follow the @border-radius@  property, according to the specification. Elsewhere, the use of @border-radius@  is just to improve the look and feel of the form, and the usage is optional.
+
+The outline is set to 0 for textarea and input fields to remove the default focus highlighting in browsers like Chrome and Safari. The code above is just how the form will appear at first sight and will look like this.
+
+!/images/neon-blink-effect-firstlook.jpg!
+
+Now, let’s style the Submit button, such that it blends with the rest of the form. Add the following piece of code to your CSS file.
+
+<script src="http://gist.github.com/480407.js?file=css"></script>
+
+The CSS3 elements used above are @border-radius@, @box-shadow@  and @gradient@ properties. We have added linear gradients to the background image of the Submit button, using White and @#3cdfdf@ (aqua-blue) for which we use @-moz-linear-gradient@  property for Firefox 3.6+ and the @-webkit-gradient@ property for Chrome 4+ and Safari 4+, as shown above. For Internet Explorer, we have made use of @filter@ (IE 6,7) and @-ms-filter@  (IE 8+) properties. Unfortunately, there are no available alternatives for Opera.
+
+On hover, we just change the entire @background-color@ to @#3cdfdf@ (aqua-blue) and the text color to White.
+
+After adding the above code, the Submit button, in its full glory, will look somewhat like this.
+
+!/images/neon-blink-effect-submitbutton.jpg!
+
+h2. Step 4: Spicing it up with CSS3 -webkit-animation 
+
+Now it’s time to dive into the newer elements of CSS3, the @-webkit-animation@  feature. Add the following lines of code to the CSS file.
+
+<script src="http://gist.github.com/480409.js?file=css"></script>
+
+Many of you may not be aware of this feature, which is why I’ll try and explain in detail how it actually works.
+
+
+Keyframes are defined using the CSS “@-rule” and the syntax is:
+@-webkit-keyframes animation-name
+{
+   from{ before-state }
+   to{ after-state }
+}
+
+To insert multiple frames, just use percentage(%) as shown in the above code. “x%” implies x% of the total time elapsed. The total time is the one which we will specify in @-webkit-animation-duration@  when we use the animation.
+
+
+In the above code, we use two colors, #3cdfdf and white, to create an animation named pulsate. Here, a definite pattern has been defined, using box-shadow, for alternating pulse effect and the border property to go along with it, but you can play around with the values, and use any CSS property to create your own animation effortlessly. To use the animation, all you have to do is add the following three lines (see code above for example usage):
+
+
+-webkit-animation-name: animation-name;
+-webkit-animation-duration: animation-duration;
+-webkit-animation-iteration-count: number_of_times;
+
+We have made use of @-moz-box-shadow@ for Firefox 3.5+ and @box-shadow@ for browsers which support it, like Opera 10.5+.
+
+
+Now, when you focus on a textfield or textarea, it should glow as shown below.
+
+!/images/neon-blink-effect-neon.jpg!
+
+h2. Step 5: Adding jQuery 
+
+This is merely an optional part to give it a nice finishing touch. Just add the following lines of code in @highlight.js@.
+
+<script src="http://gist.github.com/480413.js?file=js"></script>
+
+The parts of the code have been documented as to which part corresponds to which functionality.
+
+This is a simple jQuery code, which selects the container @div@  of the focused inputfield and changes its background-color to Black, and also changes the corresponding label color to #3cdfdf (aqua-blue). Even if one clicks anywhere inside the container div, its background-color changes to Black and all the other siblings will have their background-color changed to Gray, i.e., not more than one @div@  will be highlighted at the same time. As soon as the @inputfield@  loses its focus, the background-color is reverted back to Gray, and the label color to white. Here, we need to use jQuery in order to select the Parent of an element, which is not possible using only CSS (at the time of writing).
+
+
+After including the jQuery code, field highlighting will occur as shown below.
+
+!/images/neon-blink-effect-neonhighlight.jpg!
+
+h3. Conclusion
+
+This may look a bit difficult at first sight, but it’ll hardly take more than 40 minutes to implement it. To use such an effect in a website, one will have to be very specific about the target users as of now, since Chrome and Safari users hardly make up for 20% of the total internet users and is more common amongst the younger generation. I had mentioned before we started that for browsers which do not support CSS3, we will have to gracefully degrade the effect according to the capability of the concerned browsers, rather than completely scrapping it. CSS3 is the Future of Web, and it is already here. So gear up! All advices and suggestions will be welcomed with open arms… :-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
