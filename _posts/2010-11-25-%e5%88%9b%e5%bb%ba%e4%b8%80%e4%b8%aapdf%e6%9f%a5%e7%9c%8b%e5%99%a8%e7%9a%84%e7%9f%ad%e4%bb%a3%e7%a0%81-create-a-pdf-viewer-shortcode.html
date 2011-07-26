@@ -1,0 +1,27 @@
+--- 
+layout: post
+title: !binary |
+  5Yib5bu65LiA5LiqUERG5p+l55yL5Zmo55qE55+t5Luj56CBIENyZWF0ZSBh
+  IFBERiB2aWV3ZXIgc2hvcnRjb2Rl
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: ""
+tags: []
+
+type: post
+status: publish
+---
+The first step is to paste the following code into your <em>functions.php</em> file:
+
+第一步你要添加下面的代码到你的<em>functions.php文件</em>
+<pre>function pdflink($attr, $content) {
+	return '&lt;a href="http://docs.google.com/viewer?url=' . $attr['href'] . '"&gt;'.$content.'&lt;/a&gt;';
+}
+add_shortcode('pdf', 'pdflink');
+</pre>
+Once you saved the file, you'll be able to use the shortcode on your posts and page. Here is the syntax:
+
+你能用类似下面的短代码添加到你的文章 或者页面。
+<pre>[pdf href="http://yoursite.com/linktoyour/file.pdf"]View PDF[/pdf]</pre>

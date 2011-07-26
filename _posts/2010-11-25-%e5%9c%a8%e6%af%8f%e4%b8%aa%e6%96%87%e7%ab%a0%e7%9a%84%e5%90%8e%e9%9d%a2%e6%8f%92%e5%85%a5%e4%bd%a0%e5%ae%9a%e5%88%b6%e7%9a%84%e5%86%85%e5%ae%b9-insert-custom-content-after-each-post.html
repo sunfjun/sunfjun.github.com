@@ -1,0 +1,26 @@
+--- 
+layout: post
+title: !binary |
+  5Zyo5q+P5Liq5paH56ug55qE5ZCO6Z2i5o+S5YWl5L2g5a6a5Yi255qE5YaF
+  5a65IEluc2VydCBjdXN0b20gY29udGVudCBhZnRlciBlYWNoIHBvc3Q=
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: ""
+tags: []
+
+type: post
+status: publish
+---
+You just have to paste the following code into your functions.php and  save the file. Once done, custom content will be inserted below each of  your posts.
+
+你只需要添加下面的代码到你的functions.php 文件。 你定制的内容就会插入到每个文章的下面。
+<pre>function add_post_content($content) {
+	if(!is_feed() &amp;&amp; !is_home()) {
+		$content .= '&lt;p&gt;This article is copyright &amp;copy; '.date('Y').'&amp;nbsp;'.bloginfo('name').'&lt;/p&gt;';
+	}
+	return $content;
+}
+add_filter('the_content', 'add_post_content');
+</pre>

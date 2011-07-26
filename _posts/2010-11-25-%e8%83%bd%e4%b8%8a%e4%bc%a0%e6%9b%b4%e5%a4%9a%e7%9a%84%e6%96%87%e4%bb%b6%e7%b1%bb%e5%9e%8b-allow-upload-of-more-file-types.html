@@ -1,0 +1,33 @@
+--- 
+layout: post
+title: !binary |
+  6IO95LiK5Lyg5pu05aSa55qE5paH5Lu257G75Z6LIGFsbG93IHVwbG9hZCBv
+  ZiBtb3JlIGZpbGUgdHlwZXM=
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: ""
+tags: 
+- !binary |
+  V29yZHByZXNzIOenmOivgA==
+
+type: post
+status: publish
+---
+Simply paste the following code on your <em>functions.php</em> file. If needed, you can add more file types by adding them on line 4, separated by a pipe (|)
+
+只需要添加下面的代码到你的<em>functions.php 文件。 如果你还需要，你能添加文件类型到代码上的第4行 用(|)分开。
+</em>
+<pre>&lt;?php
+function addUploadMimes($mimes) {
+    $mimes = array_merge($mimes, array(
+        'tmbundle|tmCommand|tmDragCommand|tmSnippet|tmLanguage|tmPreferences' =&gt; 'application/octet-stream'
+    ));
+
+    return $mimes;
+}
+?&gt;
+
+add_filter('upload_mimes', 'addUploadMimes');
+</pre>

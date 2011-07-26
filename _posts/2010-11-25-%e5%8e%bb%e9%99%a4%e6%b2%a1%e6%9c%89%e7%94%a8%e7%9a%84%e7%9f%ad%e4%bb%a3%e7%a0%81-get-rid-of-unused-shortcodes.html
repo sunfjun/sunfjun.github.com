@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: !binary |
+  5Y676Zmk5rKh5pyJ55So55qE55+t5Luj56CBIEdldCByaWQgb2YgdW51c2Vk
+  IHNob3J0Y29kZXM=
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: "%e5%8e%bb%e9%99%a4%e6%9c%aa%e4%bd%bf%e7%94%a8%e7%9a%84%e7%9f%ad%e4%bb%a3%e7%a0%81-get-rid-of-unused-shortcodes"
+tags: 
+- !binary |
+  V29yZHByZXNzIOenmOivgA==
+
+type: post
+status: publish
+---
+Simply run the following SQL query on your WordPress database, using  the command line client or PhpMyAdmin. In this example, I assume the  unused shortcode is <em>[tweet]</em>.
+<strong>Don't forget to backup your database before using this query.</strong>
+
+<strong>只需要用mysql命令行或者</strong>PhpMyAdmin <strong>去运行下面的sql代码 。</strong>
+
+<strong>在这个例子假设你有[tweet]</strong>短代码需要去除
+<pre>UPDATE wp_post SET post_content = replace(post_content, '[tweet]', '' ) ;
+</pre>

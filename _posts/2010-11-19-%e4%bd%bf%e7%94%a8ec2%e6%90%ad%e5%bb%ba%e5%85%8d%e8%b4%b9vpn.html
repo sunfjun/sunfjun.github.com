@@ -1,0 +1,57 @@
+--- 
+layout: post
+title: !binary |
+  5L2/55SoRUMy5pCt5bu65YWN6LS5VlBO
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: "%e4%ba%9a%e9%a9%ac%e9%80%8a%e4%b8%8a%e6%90%ad%e5%bb%ba%e5%85%8d%e8%b4%b9%e7%9a%84vpn"
+tags: 
+- VPN
+type: post
+status: publish
+---
+1. 安装软件包
+<pre>
+<div id="LC2">$ sudo apt-get update</div>
+
+
+<div id="LC3">$ sudo apt-get install pptpd</div>
+
+</pre>
+2. 配置
+
+1） 设置/etc/pptpd.conf
+在打开的pptpd.conf文件中修改如下
+localip 192.168.0.1
+remoteip 192.168.0.234-238,192.168.0.245
+把着两行的注解＃号去掉 然后保存
+2） 设置/etc/ppp/pptpd-options
+在打开的pptpd-options 文件中修改如下
+#ms-dns 10.0.0.1
+#ms-dns 10.0.0.2
+改成
+ms-dns 208.67.222.222
+ms-dns 8.8.8.8
+
+一个是opendns 一个是谷歌的dns  然后保存
+3） 设置 /etc/ppp/chap-secrets
+name     pptpd      passwd       *
+
+这里是设置vpn登录的用户名密码的 name 是你的登录用户名    password 是你的vpn登录密码
+
+3 然后重启pptpd
+sudo /etc/init.d/pptpd restart
+
+4 设置打开转发
+echo "1"&gt;/proc/sys/net/ipv4/ip_forward
+
+修改/etc/sysctl.conf
+net.ipv4.ip_forward=1 去掉注释
+然后 sudo sysctl -p
+
+sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
+<div>现在你还是链接不上vpn 因为亚马逊的防火墙 还要把端口 1723 打开</div>
+<div><a href="../wp-content/uploads/2010/11/amazon_29.png"><img title="amazon_29" src="../wp-content/uploads/2010/11/amazon_29-1024x626.png" alt="" width="640" height="391" /></a></div>
+<div>到这里设置vpn 就完成了  现在你可以用vpn翻墙了。</div>

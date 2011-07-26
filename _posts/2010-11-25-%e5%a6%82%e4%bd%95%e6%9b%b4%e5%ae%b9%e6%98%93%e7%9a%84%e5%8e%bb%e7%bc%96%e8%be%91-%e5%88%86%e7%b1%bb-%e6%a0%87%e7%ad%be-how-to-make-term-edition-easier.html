@@ -1,0 +1,49 @@
+--- 
+layout: post
+title: !binary |
+  5aaC5L2V5pu05a655piT55qE5Y6757yW6L6RIOWIhuexuyDmoIfnrb4gSG93
+  IHRvIG1ha2UgdGVybSBlZGl0aW9uIGVhc2llcg==
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: ""
+tags: []
+
+type: post
+status: publish
+---
+Simply paste this function on your <em>functions.php</em> file:
+
+只需要添加下面的代码到你的<em>functions.php 文件
+</em>
+<pre>if ( !function_exists('edit_term_link') ) {
+  function edit_term_link( $link = '', $before = '',
+      $after = '', $term = null ) {
+
+    if ( $term == null ) {
+      global $wp_query;
+      $term = $wp_query-&gt;get_queried_object();
+    }
+
+    $tax = get_taxonomy( $term-&gt;taxonomy );
+    if ( !current_user_can($tax-&gt;cap-&gt;edit_terms) )
+      return;
+
+    if ( empty($link) )
+      $link = __('Edit This');
+
+    $link = '&lt;a href="' . get_edit_tag_link( $term-&gt;term_id,
+        $term-&gt;taxonomy ) . '" title="' . $link . '"&gt;' . $link . '&lt;/a&gt;';
+    echo $before .
+       apply_filters( 'edit_term_link', $link, $term-&gt;term_id ) . $after;
+  }
+}
+</pre>
+Once you saved your <em>functions.php</em> file, add the following code on any category, tag or taxonomy template:
+
+添加下面的代码到你想要编辑的 分类 标签 的模板上
+<pre>&lt;?php edit_term_link(); ?&gt;</pre>
+It will output a link (only if you're logged in as an administrator, of course) to quickly edit the term.
+
+它将输出一个链接 到你的编辑页面 （当你是管理员登录时它才显示。

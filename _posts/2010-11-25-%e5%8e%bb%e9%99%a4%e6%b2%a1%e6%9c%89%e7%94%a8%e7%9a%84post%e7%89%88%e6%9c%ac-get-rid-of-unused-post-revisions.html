@@ -1,0 +1,29 @@
+--- 
+layout: post
+title: !binary |
+  5Y676Zmk5rKh5pyJ55So55qEcG9zdOeJiOacrCBHZXQgcmlkIG9mIHVudXNl
+  ZCBwb3N0IHJldmlzaW9ucw==
+
+published: true
+meta: 
+  _edit_last: "1"
+  _wp_old_slug: ""
+tags: 
+- !binary |
+  V29yZHByZXNzIOenmOivgA==
+
+type: post
+status: publish
+---
+Just run the following query on your WordPress database, and all  revisions (As well as meta associated with it) will be deleted from your  database.
+Of course, do not forget to make a backup of your database before running the code.
+
+只需要在你的Wordpress 数据库执行下面的sql语句。 所有的文章版本 都会 从你的数据库去除掉
+<pre>DELETE a,b,c
+FROM wp_posts a
+WHERE a.post_type = 'revision'
+LEFT JOIN wp_term_relationships b
+ON (a.ID = b.object_id)
+LEFT JOIN wp_postmeta c ON (a.ID = c.post_id);
+</pre>
+<strong><em> </em></strong>
