@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Nexus S\xE5\x8D\x87\xE7\xBA\xA7 Android 2.3.1, 2.3.2, 2.3.3, 2.3.4"
+title: "Nexus S Upgrade Android 2.3.1, 2.3.2, 2.3.3, 2.3.4 4.0"
 published: true
 meta: 
   _encloseme: "1"
@@ -13,10 +13,11 @@ type: post
 status: publish
 ---
 <h1><strong>升级方法，</strong></h1>
-1.  将该文件放到你的手机的内部存储空间的根目录中
-2.  关机，然后重新启动并通过持续按下 volume up（音量增大）和 power（电源）按钮的方法进入 bootloader
-3.  使用 volume（音量）按钮选中“recovery”，并按下 power（电源）按钮确认
-4.  当你在屏幕上看到三角形后，保持按下 power（电源）按钮然后再按 volume up（音量增大）按钮，这时你可以看到一个选项列表，选择更新文件即可.
+#  将该文件放到你的手机的内部存储空间的根目录中
+#  关机，然后重新启动并通过持续按下 volume up（音量增大）和 power（电源）按钮的方法进入 bootloader
+#  使用 volume（音量）按钮选中“recovery”，并按下 power（电源）按钮确认
+#  当你在屏幕上看到三角形后，保持按下 power（电源）按钮然后再按 volume up（音量增大）按钮，这时你可以看到一个选项列表，选择更新文件即可.
+
 android 2.3.3 升级到 android 2.3.4升级包
 <a href="http://v3.lscache3.c.android.clients.google.com/packages/data/ota/google_crespo/a14a2dd09749.signed-soju-GRJ22-from-GRI40.a14a2dd0.zip">http://v3.lscache3.c.android.clients.google.com/packages/data/ota/google_crespo/a14a2dd09749.signed-soju-GRJ22-from-GRI40.a14a2dd0.zip</a>
 
@@ -28,3 +29,7 @@ android 2.3.2 升级到 android 2.3.3升级包
 
 android 2.2.2 升级到 android 2.3.3升级包
 <a href="http://android.clients.google.com/packages/ota/passion/81304b2de707.signed-passion-GRI40-from-FRG83G.81304b2d.zip">http://android.clients.google.com/packages/ota/passion/81304b2de707.signed-passion-GRI40-from-FRG83G.81304b2d.zip</a>
+
+android 2.3.4 升级到 android 4.0升级包
+<a href="http://android.clients.google.com/packages/ota/google_crespo/VQ8PQk_V.zip">http://android.clients.google.com/packages/ota/google_crespo/VQ8PQk_V.zip</a>
+
